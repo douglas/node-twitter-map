@@ -1,0 +1,17 @@
+{
+  "name": "test",
+  "description": "demo node.js",
+  "version": "0.1.0",
+  "author": "Alex Shulman",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/uclinux/node-boilerplate.git"
+  },
+  "engine": [
+    "node >=0.1.90"
+  ],
+  "subdomain": "ajs",
+  "scripts": {
+    "start": "server.js"
+  }
+}

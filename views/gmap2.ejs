@@ -1,0 +1,66 @@
+    </style>
+ 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  	<script>!window.jQuery && document.write('<script src="js/jquery-1.4.2.min.js"><\/script>')</script>
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAArzQf6kQXUuY8NGUQ9YGdCRRhovV4ZmAlU2DwqmfIbWKwkTt3LBTsFXmrjisWuPM5qdudnMj54AAUFg&amp;autoload={'modules':[{name:'maps',version:3,other_params:'sensor=false'}]}"></script>
+ 	<script type="text/javascript">
+
+            $(document).ready(function(){
+				jQuery(window).ready(function(){  
+             		jQuery("#btnInit").click(initiate_geolocation);  
+        	 });
+	  	function initiate_geolocation() {  
+             		navigator.geolocation.getCurrentPosition(handle_geolocation_query);  
+         	}
+		function handle_geolocation_query(position){
+			GeoLocatePosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			$("#radius").val(1);
+			SetPosition(GeoLocatePosition);
+			Map.setZoom(13);
+						  
+         	}
+                var Circle = null;
+                var Radius = $("#radius").val(0);
+
+                var StartPosition = new google.maps.LatLng(39.11231, -97.19585);
+                function SetPosition(Location, Viewport) {
+                    Marker.setPosition(Location);
+                    if(Viewport){
+                        Map.fitBounds(Viewport);
+                        Map.setZoom(Map.getZoom() + 2);
+                    }
+                    else {
+                        Map.panTo(Location);
+                    }}
+
+                var MapOptions = {
+                    zoom: 5,
+                    center: StartPosition,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeControl: false,
+                    disableDoubleClickZoom: true,
+                    streetViewControl: false
+                };
+
+
+                var MapView = $("#map");
+                var Map = new google.maps.Map(MapView.get(0), MapOptions);
+
+                var Marker = new google.maps.Marker({
+                    position: StartPosition, 
+                    map: Map, 
+                    title: "Drag Me",
+                    draggable: true
+                });
+                google.maps.event.addListener(Marker, "dragend", function(event) {
+                    SetPosition(Marker.position);
+                });
+                SetPosition(Marker.position);
+		window.myMap = Map;
+            });
+
+        </script>
+	<div sytle="top:0; left:0 height: 10%; boarder:5px">
+  	<button id="btnReset" >Reset Markers</button><button id="btnInit" >Find my location</button>
+	</div>
+	<div id="map" style="position: absolute;  top: 4em; bottom: 0; left: 0; right: 0; z-index: 0;"> </div>  
+   
