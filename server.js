@@ -19,7 +19,7 @@ server.configure(function(){
 //setup twitternode
 var twit = new TwitterNode({
  user:'ajshulman',
- password:'michaela',
+ password:'***',
  locations:[-125.1395,21.8912,-65.8,50.1411]
 });
 //catch twitter errors
