@@ -17,10 +17,10 @@ server.configure(function(){
 
 //setup twitternode
 var twit = new twitter({
- consumer_key: 'VmZ00fDPQv7PrEAn031AQQ',
- consumer_secret: 'U5AVDDkTBy3eYUiEGpXXK84wXYvT3fvrsZaTTR8kE',
- access_token_key: '14954480-8E5L3ZigDCVzAbHMAlsG8KI2UBA28d6243C6hhnY',
- access_token_secret: 't6fODqhqioqpnn06wLybQsJ5e07VxA6ixqLp3rV4'
+ consumer_key: '#',
+ consumer_secret: '#',
+ access_token_key: '#',
+ access_token_secret: '#'
 });
 
 
